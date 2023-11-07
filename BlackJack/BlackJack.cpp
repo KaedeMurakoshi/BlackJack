@@ -2,10 +2,18 @@
 //
 
 #include <iostream>
+#include"Deck.h"
+#include"Player.h"
+#include"Dealer.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    Deck deck;
+    Player player;
+    int i = 0;
+
+    // 山札をシャッフル
+    deck.Shuffle();
 }
 
 // プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー
