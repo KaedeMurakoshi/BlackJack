@@ -21,5 +21,5 @@ public:
 
 private:
 	Card _deck[MAX_CARD_NUM];	// ŽRŽD
-	int deckIndex;
+	int deckIndex;				// ‚Ç‚±‚Ü‚ÅŽRŽD‚ðˆø‚¢‚½‚©
 };

@@ -14,6 +14,7 @@ int main()
 
     // 山札をシャッフル
     deck.Shuffle();
+    player.Draw(deck);
 }
 
 // プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー

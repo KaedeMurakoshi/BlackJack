@@ -4,11 +4,13 @@
 #include"Deck.h"
 using namespace std;
 
-#define DEBUG
+//#define DEBUG
 
 // コンストラクタ
 Deck::Deck()
 {
+	deckIndex = 0;
+
 	// 山札の初期化
 	for (int i = 0; i < CARD_RANGE; ++i)
 	{
