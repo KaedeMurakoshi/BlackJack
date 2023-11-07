@@ -5,7 +5,7 @@ class Player {
 public:
 	Player();							// コンストラクタ
 	void Show()const;					// 手札表示
-	bool Draw(const Deck& deck);		// standするかバーストするまで繰り返す 
+	bool Draw(Deck& deck);		// standするかバーストするまで繰り返す 
 	bool CalcScore();					// 手札の点数を計算（バーストしたらfalse）
 
 private:

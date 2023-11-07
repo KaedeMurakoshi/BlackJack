@@ -4,7 +4,7 @@
 #include"Deck.h"
 using namespace std;
 
-//#define DEBUG
+#define DEBUG
 
 // コンストラクタ
 Deck::Deck()

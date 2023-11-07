@@ -20,14 +20,14 @@ void Player::Show()const
 
 	printf("(あなたの手札)\n");
 
-	for (int i = 0; i <= _index; ++i)
+	for (int i = 0; i < _index; ++i)
 	{
 		printf("%sの%d\n", suit[_hand[i].suit], _hand[i].num);
 	}
 }
 
 // バーストするかstandするまでドローを繰り返す
-bool Player::Draw(const Deck& deck)
+bool Player::Draw(Deck& deck)
 {
 	while (CalcScore())
 	{
@@ -45,7 +45,7 @@ bool Player::Draw(const Deck& deck)
 			++_index;
 
 			// デッキから１枚引いたらインデックスを更新
-			deck.GetIndex();
+			deck.SetIndex();
 
 			// 手札表示
 			Show();
@@ -70,7 +70,7 @@ bool Player::CalcScore()
 
 	// 手札の点数をカウント
 	// Aは先に１点としてカウントし、後で合計値によって１０点加点することで、１１点とする
-	for (int i = 0; i <= _index; ++i)
+	for (int i = 0; i < _index; ++i)
 	{
 		if (_hand[i].num == 1)
 		{
@@ -96,6 +96,7 @@ bool Player::CalcScore()
 	// バーストしていたらfalseを返す
 	if (_sum > VINGT_ET_UN)
 	{
+		printf("バーストしちゃったよん");
 		return false;
 	}
 
