@@ -6,17 +6,10 @@ class Deck {
 public:
 	Deck();						// コンストラクタ
 	void Shuffle();				// 山札をシャッフルする関数
-	Card GetDeck()const
-	{
-		return _deck[deckIndex];
-	}
-	int GetIndex()const
+	Card GetDeckCard();			// 山札から一枚引き、indexを更新
+	int GetIndex()const			// 山札の何枚目まで引いたかを返す
 	{
 		return deckIndex;
-	}
-	void SetIndex()
-	{
-		++deckIndex;
 	}
 
 private:

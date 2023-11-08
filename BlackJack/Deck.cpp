@@ -9,7 +9,7 @@ using namespace std;
 // コンストラクタ
 Deck::Deck()
 {
-	deckIndex = 0;
+	deckIndex = -1;
 
 	// 山札の初期化
 	for (int i = 0; i < CARD_RANGE; ++i)
@@ -49,4 +49,20 @@ void Deck::Shuffle()
 		printf("%dの%d\n", _deck[k].suit, _deck[k].num);
 	}
 #endif // DEBUG
+}
+
+// 山札の一番上のカードを返す
+Card Deck::GetDeckCard()
+{
+	// デッキのインデックス更新
+	++deckIndex;
+
+	// インデックスが無効な場合
+	if (deckIndex < 0 || deckIndex > MAX_CARD_NUM - 1)
+	{
+		printf("インデックスが無効です\n");
+		deckIndex = 0;
+	}
+
+	return _deck[deckIndex];	
 }

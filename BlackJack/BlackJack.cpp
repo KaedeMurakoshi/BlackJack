@@ -8,13 +8,16 @@
 
 int main()
 {
+    time_t t;
+    srand(time(&t) % RAND_MAX);
+
     Deck deck;
     Player player;
     int i = 0;
 
     // 山札をシャッフル
     deck.Shuffle();
-    player.Draw(deck);
+    player.Play(deck);
 }
 
 // プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー
