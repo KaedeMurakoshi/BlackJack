@@ -9,10 +9,10 @@ public:
 	Card GetDeckCard();			// 山札から一枚引き、indexを更新
 	int GetIndex()const			// 山札の何枚目まで引いたかを返す
 	{
-		return deckIndex;
+		return _deckIndex;
 	}
 
 private:
 	Card _deck[MAX_CARD_NUM];	// 山札
-	int deckIndex;				// どこまで山札を引いたか
+	int _deckIndex;				// どこまで山札を引いたか
 };

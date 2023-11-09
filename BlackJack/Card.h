@@ -2,6 +2,7 @@
 
 // ここにカードの情報をまとめる
 
+// ＜定数一覧＞
 const int MAX_CARD_NUM = 52;	// 山札の枚数
 const int CARD_RANGE = 13;		// カードの数字の範囲（A～K）
 const int HAND_SIZE = 20;		// 手札の最大枚数

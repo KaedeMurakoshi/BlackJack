@@ -2,6 +2,9 @@
 #include"Player.h"
 using namespace std;
 
+// BlackJack.cppのグローバル変数を使う
+extern const char* suitName[];
+
 // コンストラクタ
 Player::Player()
 {
@@ -10,26 +13,29 @@ Player::Player()
 		_hand[i].num = 0;
 		_hand[i].suit = SPADE;
 	}
-	_index = 0;
+	_handIndex = 0;
 }
 
 void Player::Show()const
 {
-	const char* suit[] = {"スペード", "ハート", "ダイヤモンド", "クラブ"};
+	printf("===================\n");
 
-	if (_index <= 0)
+	// 手札が０枚の時
+	if (_handIndex <= 0)
 	{
-		printf("手札がありません");
+		printf("手札がありません\n");
 		return;
 	}
 
 	printf("(あなたの手札)\n");
 
 	// 手札をすべて表示
-	for (int i = 0; i < _index; ++i)
+	for (int i = 0; i < _handIndex; ++i)
 	{
-		printf("%sの%d\n", suit[_hand[i].suit], _hand[i].num);
+		printf("[%sの%d]\n", suitName[_hand[i].suit], _hand[i].num);
 	}
+
+	printf("===================\n");
 }
 
 // バーストするかstandするまでドローを繰り返す
@@ -42,36 +48,25 @@ bool Player::Play(Deck& deck)
 		// 選択肢表示
 		printf("1.hit 2.stand > ");
 		cin >> select;
-		
+		printf("\n");
+
 		// hit
 		if (select == 1)
 		{
-			//printf("[デバッグ]ドロー前の山札のインデックス>%d\n", deck.GetIndex());
-			Card drawCard = deck.GetDeckCard();
-			//("[デバッグ]ドロー後の山札のインデックス>%d\n", deck.GetIndex());
-
-			// 手札に引いたカードの情報を書き込む
-			_hand[_index].suit = drawCard.suit;
-			_hand[_index].num = drawCard.num;
-
-			// 引いたカード
-			printf("引いたカード：%dの%d", drawCard.suit, drawCard.num);
-
-			//手札のインデックス更新
-			++_index;
+			Draw(deck);
 
 			// 手札表示
 			Show();
 		}
-		// stand
+		// standを選択
 		else if (select == 2)
 		{
-			printf("スタンドします");
+			printf("～スタンドします～\n");
 			return true;
 		}
 		else
 		{
-			printf("１～２を入力してください");
+			printf("１～２を入力してください\n");
 		}
 	}
 
@@ -86,7 +81,7 @@ bool Player::CalcScore()
 
 	// 手札の点数をカウント
 	// Aは先に１点としてカウントし、後で合計値によって１０点加点することで、１１点とする
-	for (int i = 0; i < _index; ++i)
+	for (int i = 0; i < _handIndex; ++i)
 	{
 		// 手札にAがあれば
 		if (_hand[i].num == 1)
@@ -120,8 +115,27 @@ bool Player::CalcScore()
 	}
 
 	// 合計点数表示
-	printf("現在の合計点数：%d\n", sum);
+	printf("\nあなたの合計点数：%d\n\n", sum);
 
 	// バーストしていなければtrueを返す
 	return true;
 }
+
+// カードを引く部分が冗長なので関数化
+// カードを一枚引き手札に加える、引いたカードを表示
+void Player::Draw(Deck& deck)
+{
+	// 山札から一枚引いて保存
+	Card nextCard = deck.GetDeckCard();
+
+	// 手札に引いたカードの情報を書き込む
+	_hand[_handIndex].suit = nextCard.suit;
+	_hand[_handIndex].num = nextCard.num;
+
+	//手札のインデックス更新
+	++_handIndex;
+
+	// 引いたカードを表示
+	printf("引いたカード：%dの%d\n", nextCard.suit, nextCard.num);
+}
+

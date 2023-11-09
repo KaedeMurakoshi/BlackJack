@@ -4,12 +4,12 @@
 #include"Deck.h"
 using namespace std;
 
-#define DEBUG
+//#define DEBUG
 
 // コンストラクタ
 Deck::Deck()
 {
-	deckIndex = -1;
+	_deckIndex = -1;
 
 	// 山札の初期化
 	for (int i = 0; i < CARD_RANGE; ++i)
@@ -43,7 +43,7 @@ void Deck::Shuffle()
 
 #ifdef DEBUG
 	// シャッフル後表示
-	printf("山札↓\n");
+	printf("[デバッグ]山札表示\n");
 	for (int k = 0; k < MAX_CARD_NUM; ++k)
 	{
 		printf("%dの%d\n", _deck[k].suit, _deck[k].num);
@@ -55,14 +55,16 @@ void Deck::Shuffle()
 Card Deck::GetDeckCard()
 {
 	// デッキのインデックス更新
-	++deckIndex;
+	++_deckIndex;
 
 	// インデックスが無効な場合
-	if (deckIndex < 0 || deckIndex > MAX_CARD_NUM - 1)
+	if (_deckIndex < 0 || _deckIndex > MAX_CARD_NUM - 1)
 	{
 		printf("インデックスが無効です\n");
-		deckIndex = 0;
+
+		// _deckIndexを有効な値に変更
+		_deckIndex = 0;
 	}
 
-	return _deck[deckIndex];	
+	return _deck[_deckIndex];	
 }

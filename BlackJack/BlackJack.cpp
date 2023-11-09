@@ -2,22 +2,52 @@
 //
 
 #include <iostream>
-#include"Deck.h"
 #include"Player.h"
 #include"Dealer.h"
 
+// 表示用
+const char* suitName[] = { "スペード", "ハート", "ダイヤモンド", "クラブ" };
+
 int main()
 {
+    // 乱数準備
     time_t t;
     srand(time(&t) % RAND_MAX);
 
+    // クラスの実体を宣言
     Deck deck;
     Player player;
-    int i = 0;
+    Dealer dealer;
 
     // 山札をシャッフル
     deck.Shuffle();
-    player.Play(deck);
+
+    // 最初に二枚引く
+    player.Draw(deck);
+    player.Draw(deck);   
+    // 手札表示
+    player.Show();
+
+    // 最初に二枚引く
+    dealer.Draw(deck);
+    dealer.Draw(deck);
+
+    // 手札表示
+    dealer.ShowAllHands(false);	// falseにすると１枚だけ表示。残りは？で表示
+
+    // standするかバーストするまで繰り返す
+    if (!player.Play(deck))
+    {
+        // バーストしたら終了
+        printf("YOU LOSE\n");
+        return 0;
+    }
+
+    // １７点以下かつバーストするまでhit
+    dealer.Play(deck);
+
+    // 手札をすべて表示
+    dealer.ShowAllHands(true);
 }
 
 // プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー
