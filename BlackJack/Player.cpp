@@ -61,7 +61,7 @@ bool Player::Play(Deck& deck)
 		// standを選択
 		else if (select == 2)
 		{
-			printf("～スタンドします～\n");
+			printf("スタンド\n");
 			return true;
 		}
 		else
@@ -69,7 +69,6 @@ bool Player::Play(Deck& deck)
 			printf("１～２を入力してください\n");
 		}
 	}
-
 	return false;
 }
 
@@ -136,6 +135,6 @@ void Player::Draw(Deck& deck)
 	++_handIndex;
 
 	// 引いたカードを表示
-	printf("引いたカード：%dの%d\n", nextCard.suit, nextCard.num);
+	printf("引いたカード：%sの%d\n", suitName[nextCard.suit], nextCard.num);
 }
 

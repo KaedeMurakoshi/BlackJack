@@ -33,8 +33,6 @@ void Dealer::ShowAllHands(bool showAll)const
 	// showAllがtrueの時は手札をすべて表示
 	if (showAll)
 	{
-		printf("(ディーラーの手札)\n");
-
 		// 手札をすべて表示
 		for (int i = 0; i < _handIndex; ++i)
 		{

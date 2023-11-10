@@ -6,7 +6,7 @@
 #include"Dealer.h"
 
 // 表示用
-const char* suitName[] = { "スペード", "ハート", "ダイヤモンド", "クラブ" };
+const char* suitName[] = { "スペード", "ハート", "ダイヤ", "クラブ" };
 
 int main()
 {
@@ -42,7 +42,8 @@ int main()
         printf("YOU LOSE\n");
         return 0;
     }
-
+    printf("～～～～～～～～～～～～～～～");
+    // ここからディーラーの処理
     // １７点以下かつバーストするまでhit
     dealer.Play(deck);
 
