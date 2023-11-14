@@ -26,13 +26,21 @@ int main()
 
     // 最初に二枚引く
     player.Draw(deck);
-    player.Draw(deck);   
-    // 手札表示
+    player.Draw(deck);
+
+    dealer.Draw(deck);
+    dealer.Draw(deck);
+
+    // プレーヤーの手札表示
+    printf("[あなたの手札]\n");
     player.ShowAllHands(true);
 
-    // 最初に二枚引く
-    dealer.Draw(deck);
-    dealer.Draw(deck);
+    // ディーラーの手札を一枚目だけ表示
+    printf("\n\n[ディーラーの手札]\n");
+    dealer.ShowAllHands(false);
+
+    // プレーヤーのスコアを表示
+    printf("\nあなたのスコア：%d\n\n", player.CalcScore());
 
     // standするかバーストするまで繰り返す
     if (!player.Play(deck))
@@ -43,14 +51,13 @@ int main()
     }
     printf("～～～～～～～～～～～～～～～\n");
 
-    // ここからディーラーの処理
-    // １７点以下かつバーストするまでhit
+    // ディーラーの自動処理
     dealer.Play(deck);
 
     // 手札をすべて表示
-    printf("[プレーヤーの手札]\n");
+    printf("[あなたの手札]\n");
     player.ShowAllHands(true);
-    printf("[ディーラーの手札]\n");
+    printf("\n\n[ディーラーの手札]\n");
     dealer.ShowAllHands(true);
 
     // リザルト
