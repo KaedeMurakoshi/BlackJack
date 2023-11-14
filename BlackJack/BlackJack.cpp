@@ -26,7 +26,7 @@ int main()
     player.Draw(deck);
     player.Draw(deck);   
     // 手札表示
-    player.Show();
+    player.ShowAllHands(true);
 
     // 最初に二枚引く
     dealer.Draw(deck);
