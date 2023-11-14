@@ -3,7 +3,6 @@
 using namespace std;
 
 // BlackJack.cppのグローバル変数を使う
-extern const char* suitName[];
 
 bool Dealer::Play(Deck& deck)
 {

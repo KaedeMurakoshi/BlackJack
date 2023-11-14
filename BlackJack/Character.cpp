@@ -2,7 +2,8 @@
 #include"Character.h"
 
 // BlackJack.cppのグローバル変数を使う
-extern const char* suitName[];
+extern const char* suit[];
+extern const char* num[];
 
 // コンストラクタ
 Character::Character()
@@ -33,14 +34,14 @@ void Character::ShowAllHands(bool showAll)const
 		// 手札をすべて表示
 		for (int i = 0; i < _handIndex; ++i)
 		{
-			printf("[%sの%d]\n", suitName[_hand[i].suit], _hand[i].num);
+			printf("[%sの%s]\n", suit[_hand[i].suit], num[_hand[i].num]);
 		}
 	}
 	// showAllがfalseの時は一枚だけ表示
 	else
 	{
 		// 一枚だけ表示
-		printf("[%sの%d]\n", suitName[_hand[0].suit], _hand[0].num);
+		printf("[%sの%s]\n", suit[_hand[0].suit], num[_hand[0].num]);
 
 		for (int i = 1; i < _handIndex; ++i)
 		{

@@ -3,7 +3,6 @@
 using namespace std;
 
 // BlackJack.cppのグローバル変数を使う
-extern const char* suitName[];
 
 // バーストするかstandするまでドローを繰り返す
 bool Player::Play(Deck& deck)
@@ -29,7 +28,7 @@ bool Player::Play(Deck& deck)
 			// 手札表示
 			ShowAllHands(true);
 		}
-		// standを選択
+		// standを選択したらtrueを返す
 		else if (select == 2)
 		{
 			printf("スタンド\n");
@@ -40,6 +39,7 @@ bool Player::Play(Deck& deck)
 			printf("１～２を入力してください\n");
 		}
 	}
+	// バーストしたらfalseを返す
 	return false;
 }
 

@@ -8,7 +8,8 @@
 using namespace std;
 
 // 表示用
-const char* suitName[] = { "スペード", "ハート", "ダイヤ", "クラブ" };
+const char* suit[] = { "スペード", "ハート", "ダイヤ", "クラブ" };
+const char* num[] = { "0", "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", };
 
 // リザルト
 static void ShowResult(Player& player, Dealer& dealer)
