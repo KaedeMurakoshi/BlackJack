@@ -22,7 +22,6 @@ bool Dealer::Play(Deck& deck)
 	while (CalcScore() < 17 && CalcScore() > 0)
 	{
 		Draw(deck);
-		ShowAllHands(false);
 	}
 
 	return false;

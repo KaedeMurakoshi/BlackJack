@@ -32,9 +32,6 @@ int main()
     dealer.Draw(deck);
     dealer.Draw(deck);
 
-    // 手札表示
-    dealer.ShowAllHands(false);	// falseにすると１枚だけ表示。残りは？で表示
-
     // standするかバーストするまで繰り返す
     if (!player.Play(deck))
     {
@@ -43,11 +40,13 @@ int main()
         return 0;
     }
     printf("～～～～～～～～～～～～～～～");
+
     // ここからディーラーの処理
     // １７点以下かつバーストするまでhit
     dealer.Play(deck);
 
     // 手札をすべて表示
+    player.ShowAllHands(true);
     dealer.ShowAllHands(true);
 }
 
