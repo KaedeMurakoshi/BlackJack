@@ -5,6 +5,8 @@
 #include"Player.h"
 #include"Dealer.h"
 
+using namespace std;
+
 // 表示用
 const char* suitName[] = { "スペード", "ハート", "ダイヤ", "クラブ" };
 
@@ -39,15 +41,20 @@ int main()
         printf("バーストしました、あなたの負けです\n");
         return 0;
     }
-    printf("～～～～～～～～～～～～～～～");
+    printf("～～～～～～～～～～～～～～～\n");
 
     // ここからディーラーの処理
     // １７点以下かつバーストするまでhit
     dealer.Play(deck);
 
     // 手札をすべて表示
+    printf("[プレーヤーの手札]\n");
     player.ShowAllHands(true);
+    printf("[ディーラーの手札]\n");
     dealer.ShowAllHands(true);
+
+    // リザルト
+    cout << "勝者は " << ((player.CalcScore() > dealer.CalcScore()) ? "あなた" : "ディーラー") << " です。" << endl;
 }
 
 // プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー

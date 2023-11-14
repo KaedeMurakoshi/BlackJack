@@ -16,8 +16,6 @@ void Character::ShowAllHands(bool showAll)const
 		return;
 	}
 
-	printf("(ŽèŽD•\Ž¦)\n");
-
 	// showAll‚ªtrue‚ÌŽž‚ÍŽèŽD‚ð‚·‚×‚Ä•\Ž¦
 	if (showAll)
 	{
