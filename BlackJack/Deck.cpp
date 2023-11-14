@@ -30,6 +30,9 @@ Deck::Deck()
 		_deck[i + CARD_RANGE * 3].suit = CLUB;
 		_deck[i + CARD_RANGE * 3].num = i + 1;
 	}
+
+	// 山札をシャッフル
+	Shuffle();
 }
 
 // 山札シャッフル(FIsher Yates)

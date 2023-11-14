@@ -21,9 +21,6 @@ int main()
     Player player;
     Dealer dealer;
 
-    // 山札をシャッフル
-    deck.Shuffle();
-
     // 最初に二枚引く
     player.Draw(deck);
     player.Draw(deck);
