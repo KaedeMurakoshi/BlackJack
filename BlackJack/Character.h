@@ -8,6 +8,7 @@ public:
 	int CalcScore();
 
 protected:
+	Character();
 	Card _hand[HAND_SIZE];			// 手札の配列
 	int _handIndex;					// 手札配列の要素番号（何枚引いているか）
 };

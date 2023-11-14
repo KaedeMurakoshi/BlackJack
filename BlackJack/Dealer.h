@@ -3,6 +3,5 @@
 
 class Dealer : public Character{
 public:
-	Dealer();								// コンストラクタ
 	bool Play(Deck& deck);					// １７点以下かつバーストするまでhit 
 };

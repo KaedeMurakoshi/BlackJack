@@ -5,17 +5,6 @@ using namespace std;
 // BlackJack.cppのグローバル変数を使う
 extern const char* suitName[];
 
-// コンストラクタ
-Player::Player()
-{
-	for (int i = 0; i < HAND_SIZE; ++i)
-	{
-		_hand[i].num = 0;
-		_hand[i].suit = SPADE;
-	}
-	_handIndex = 0;
-}
-
 // バーストするかstandするまでドローを繰り返す
 bool Player::Play(Deck& deck)
 {

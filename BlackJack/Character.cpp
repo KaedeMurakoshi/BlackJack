@@ -4,6 +4,17 @@
 // BlackJack.cppのグローバル変数を使う
 extern const char* suitName[];
 
+// コンストラクタ
+Character::Character()
+{
+	for (int i = 0; i < HAND_SIZE; ++i)
+	{
+		_hand[i].num = 0;
+		_hand[i].suit = SPADE;
+	}
+	_handIndex = 0;
+}
+
 // 手札を表示（ディーラーは一枚目だけ開示）
 void Character::ShowAllHands(bool showAll)const
 {
