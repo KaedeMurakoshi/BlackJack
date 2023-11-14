@@ -8,9 +8,13 @@ extern const char* suitName[];
 // バーストするかstandするまでドローを繰り返す
 bool Player::Play(Deck& deck)
 {
+	// バーストしたら終了
 	while (CalcScore())
 	{
 		int select = 0;	// 入力用
+
+		// プレーヤーのスコアを表示
+		printf("\nあなたのスコア：%d\n\n", CalcScore());
 
 		// 選択肢表示
 		printf("1.hit 2.stand > ");

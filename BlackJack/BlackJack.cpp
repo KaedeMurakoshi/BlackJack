@@ -10,6 +10,27 @@ using namespace std;
 // 表示用
 const char* suitName[] = { "スペード", "ハート", "ダイヤ", "クラブ" };
 
+// リザルト
+static void ShowResult(Player& player, Dealer& dealer)
+{
+    printf("\n～Result～\n\n");
+    // 手札をすべて表示
+    printf("[あなたの手札]\n");
+    player.ShowAllHands(true);
+    printf("\n[ディーラーの手札]\n");
+    dealer.ShowAllHands(true);
+
+    // スコアが同じのとき
+    if (player.CalcScore() == dealer.CalcScore())
+    {
+        printf("引き分けです");
+    }
+    else
+    {
+        cout << "勝者は " << ((player.CalcScore() > dealer.CalcScore()) ? "あなた" : "ディーラー") << " です。" << endl;
+    }
+}
+
 int main()
 {
     // 乱数準備
@@ -36,9 +57,6 @@ int main()
     printf("\n\n[ディーラーの手札]\n");
     dealer.ShowAllHands(false);
 
-    // プレーヤーのスコアを表示
-    printf("\nあなたのスコア：%d\n\n", player.CalcScore());
-
     // standするかバーストするまで繰り返す
     if (!player.Play(deck))
     {
@@ -46,19 +64,16 @@ int main()
         printf("バーストしました、あなたの負けです\n");
         return 0;
     }
-    printf("～～～～～～～～～～～～～～～\n");
 
     // ディーラーの自動処理
-    dealer.Play(deck);
-
-    // 手札をすべて表示
-    printf("[あなたの手札]\n");
-    player.ShowAllHands(true);
-    printf("\n\n[ディーラーの手札]\n");
-    dealer.ShowAllHands(true);
+    if (!dealer.Play(deck))
+    {
+        // バーストしたら
+        printf("バーストしました、あなたの勝ちです\n");
+    }
 
     // リザルト
-    cout << "勝者は " << ((player.CalcScore() > dealer.CalcScore()) ? "あなた" : "ディーラー") << " です。" << endl;
+    ShowResult(player, dealer);
 }
 
 // プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー

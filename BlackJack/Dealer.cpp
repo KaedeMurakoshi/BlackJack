@@ -7,10 +7,12 @@ extern const char* suitName[];
 
 bool Dealer::Play(Deck& deck)
 {
+	// スコアが１７以上になるまでhit
 	while (CalcScore() < 17 && CalcScore() > 0)
 	{
+		printf("ディーラー：「 hitします。」\n");
 		Draw(deck);
 	}
-
-	return false;
+	if (CalcScore() <= 0) return false;
+	return true;
 }
