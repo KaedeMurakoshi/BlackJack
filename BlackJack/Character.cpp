@@ -76,20 +76,6 @@ int Character::CalcScore()
 		score += 10;
 	}
 
-	// 合計点数表示
-	printf("\nディーラーの合計点数：%d\n", score);
-
-	// 17未満ならtrueを返して継続
-	if (score < 17)
-	{
-		printf("17未満。hitします\n");
-	}
-	// 17以上21以下ならfalseを返してstand
-	else if (17 <= score && score <= VINGT_ET_UN)
-	{
-		printf("standします\n");
-	}
-
 	//バーストである場合は0を返す
 	if (score > 21) {
 		//スコアに0を代入

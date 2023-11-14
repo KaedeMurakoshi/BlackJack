@@ -19,7 +19,7 @@ Player::Player()
 // バーストするかstandするまでドローを繰り返す
 bool Player::Play(Deck& deck)
 {
-	while (CalcScore() != 0)
+	while (CalcScore())
 	{
 		int select = 0;	// 入力用
 

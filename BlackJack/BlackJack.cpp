@@ -39,7 +39,7 @@ int main()
     if (!player.Play(deck))
     {
         // バーストしたら終了
-        printf("YOU LOSE\n");
+        printf("バーストしました、あなたの負けです\n");
         return 0;
     }
     printf("～～～～～～～～～～～～～～～");

@@ -19,7 +19,7 @@ Dealer::Dealer()
 
 bool Dealer::Play(Deck& deck)
 {
-	while (CalcScore())
+	while (CalcScore() < 17 && CalcScore() > 0)
 	{
 		Draw(deck);
 		ShowAllHands(false);
